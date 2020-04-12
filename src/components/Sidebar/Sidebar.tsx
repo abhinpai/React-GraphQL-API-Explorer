@@ -1,79 +1,23 @@
 import React, { PureComponent } from "react";
 import { Layout, Menu } from "antd";
-import {
-  GithubOutlined,
-  TwitterOutlined,
-  ReadOutlined,
-  ShareAltOutlined,
-  QqOutlined,
-} from "@ant-design/icons";
-
+import { inject, observer } from "mobx-react";
+import { ISidebarProps } from "./ISidebarProps";
+import { MenuItems } from "./MenuItems";
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
-interface IMenuItems {
-  title: string;
-  icon: JSX.Element;
-  subMenuItems?: ISubMenuItem[] | null;
-}
+@inject("routerStore")
+@observer
+export default class Sidebar extends PureComponent<ISidebarProps> {
+  constructor(props: ISidebarProps) {
+    super(props);
+    this.updateContentVisibility = this.updateContentVisibility.bind(this);
+  }
 
-interface ISubMenuItem {
-  title: string;
-  icon?: JSX.Element | null;
-}
-
-const MenuItems: IMenuItems[] = [
-  {
-    title: "Overview",
-    icon: <ReadOutlined />,
-    subMenuItems: null,
-  },
-  {
-    title: "Github",
-    icon: <GithubOutlined />,
-    subMenuItems: [
-      {
-        title: "User",
-        icon: null,
-      },
-      {
-        title: "Repository",
-        icon: null,
-      },
-    ],
-  },
-  {
-    title: "Twitter",
-    icon: <TwitterOutlined />,
-    subMenuItems: [
-      {
-        title: "User",
-        icon: null,
-      },
-      {
-        title: "Tweets",
-        icon: null,
-      },
-    ],
-  },
-  {
-    title: "Pokemon",
-    icon: <QqOutlined />,
-    subMenuItems: null,
-  },
-  {
-    title: "Knowledge Graph",
-    icon: <ShareAltOutlined />,
-    subMenuItems: null,
-  },
-];
-
-export default class Sidebar extends PureComponent {
   render() {
     return (
       <Sider
         width={200}
-        // className="site-layout-background"
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
@@ -97,7 +41,7 @@ export default class Sidebar extends PureComponent {
   get renderMenu() {
     var menuKey: number = 0;
     var subMenukey: number = 0;
-    return MenuItems.map((item, index) => {
+    return MenuItems.map((item) => {
       menuKey += 1;
       subMenukey += 1;
       if (item.subMenuItems) {
@@ -110,10 +54,18 @@ export default class Sidebar extends PureComponent {
                 {item.title}
               </span>
             }
+            onTitleClick={() =>
+              this.updateContentVisibility(item.renderComponent)
+            }
           >
             {item.subMenuItems.map((subMenuItem, subMenuItemIndex) => {
               return (
-                <Menu.Item key={subMenukey.toString() + subMenuItemIndex}>
+                <Menu.Item
+                  key={subMenukey.toString() + subMenuItemIndex}
+                  onClick={() =>
+                    this.updateContentVisibility(subMenuItem.renderComponent)
+                  }
+                >
                   {subMenuItem.title}
                 </Menu.Item>
               );
@@ -122,7 +74,10 @@ export default class Sidebar extends PureComponent {
         );
       } else {
         return (
-          <Menu.Item key={subMenukey.toString()}>
+          <Menu.Item
+            key={subMenukey.toString()}
+            onClick={() => this.updateContentVisibility(item.renderComponent)}
+          >
             <span>
               {item.icon}
               {item.title}
@@ -131,5 +86,13 @@ export default class Sidebar extends PureComponent {
         );
       }
     });
+  }
+
+  updateContentVisibility(component: string) {
+    var index =
+      this.props.routerStore?.componentVisiblity.findIndex(
+        (x) => x.component === component
+      ) || 0;
+    this.props.routerStore?.setVisiblity(index);
   }
 }

@@ -3,7 +3,7 @@ import { gql } from "@apollo/client";
 export default class Constants {}
 
 export class QueryConstants {
-   public static readonly AssetTypes = gql`
+  public static readonly AssetTypes = gql`
     {
       assetTypes(language: "en", excludeAssetTypeWithoutRole: false) {
         description

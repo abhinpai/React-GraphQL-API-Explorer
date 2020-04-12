@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
-import { ComponentHeader } from '../../../Header/Header';
+import { ComponentHeader } from "../../Header/Header";
 
-export default class Overview extends PureComponent {
+export default class GitHubUser extends PureComponent {
   render() {
     return (
       <div>

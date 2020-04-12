@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
 import "./Header.scss";
-import { IComponentHeaderProps } from "../../Models/IHeaderProps";
+import { IComponentHeaderProps } from "./IHeaderProps";
 const { Header } = Layout;
 
 export default class HeaderComponent extends Component {

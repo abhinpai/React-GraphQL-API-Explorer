@@ -9,6 +9,9 @@ import {
   InMemoryCache,
   ApolloProvider,
 } from "@apollo/client";
+import { Provider } from "mobx-react";
+
+import stores from "./stores";
 
 const client = new ApolloClient({
   cache: new InMemoryCache(),
@@ -22,11 +25,13 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+    <Provider {...stores}>
+      <ApolloProvider client={client}>
+        <App {...stores} />
+      </ApolloProvider>
+    </Provider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );
 
