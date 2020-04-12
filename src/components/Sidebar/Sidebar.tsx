@@ -73,7 +73,7 @@ export default class Sidebar extends PureComponent {
     return (
       <Sider
         width={200}
-        className="site-layout-background"
+        // className="site-layout-background"
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {

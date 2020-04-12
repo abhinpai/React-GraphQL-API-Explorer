@@ -1,14 +1,6 @@
 import React, { PureComponent, FC } from "react";
 import { QueryConstants } from "../../../utils/Constants";
-import { ApolloError, useQuery } from "@apollo/client";
-import ApolloClient from "apollo-client";
-
-interface IResult {
-  loading: boolean;
-  error?: ApolloError;
-  data: any;
-  client: ApolloClient<any>;
-}
+import { useQuery } from "@apollo/client";
 
 export default class AssetTypes extends PureComponent {
   render() {

@@ -4,6 +4,7 @@ import HeaderComponent from "../Header/Header";
 import { Layout } from "antd";
 import Sidebar from "../Sidebar/Sidebar";
 import AssetTypes from '../Contents/AssetType/AssetType';
+import Overview from '../Contents/Overview/Overview';
 
 const { Content } = Layout;
 
@@ -20,14 +21,8 @@ export default class Home extends PureComponent {
             <Layout style={{ padding: "0 24px 24px" }}>
               <Content
                 className="site-layout-background"
-                style={{
-                  padding: 24,
-                  margin: 0,
-                  minHeight: 280,
-                }}
               >
-                Content
-                <AssetTypes/>
+                <Overview/>
               </Content>
             </Layout>
           </Layout>
