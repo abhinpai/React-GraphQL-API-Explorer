@@ -26,7 +26,7 @@ export class SkeletonDiv extends Component<ISkeletonDiv> {
 export class GithubProfileSkeleton extends Component {
   render() {
     return (
-      <div className="profile-div">
+      <div className="content-div">
         <Row>
           <span className="span-profile">
             <SkeletonDiv width="100" height="100" />
@@ -40,7 +40,7 @@ export class GithubProfileSkeleton extends Component {
             </p>
           </section>
         </Row>
-        <Row className="profile-repo-row">
+        <Row className="profile-contents-row">
           <p>
             <SkeletonDiv width="100" height="20" />
           </p>

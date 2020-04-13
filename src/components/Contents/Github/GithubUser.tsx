@@ -1,5 +1,5 @@
 import React, { PureComponent, FC } from "react";
-import { Input, Empty, Row, Col, Card, Skeleton, Avatar, List } from "antd";
+import { Input, Empty, Row, Col, Avatar } from "antd";
 import { GitHubQuery } from "../../../utils/Constants";
 import { useQuery } from "@apollo/client";
 import { GithubProfileSkeleton } from "../../Skeleton/Skeleton";
@@ -50,12 +50,12 @@ export default class GitHubUser extends PureComponent<{}, IGitHubUserState> {
   renderProfile(data: any) {
     let emptyRepo = (
       <Empty
-        className="empty-repo"
+        className="empty-content"
         description={data.login + " doesn't have any repository"}
       />
     );
     return (
-      <div className="profile-div">
+      <div className="content-div">
         <Row>
           <span className="span-profile">
             <img
@@ -71,8 +71,8 @@ export default class GitHubUser extends PureComponent<{}, IGitHubUserState> {
             </p>
           </section>
         </Row>
-        <Row className="profile-repo-row">
-          <p>Repositories</p> 
+        <Row className="profile-contents-row">
+          <p>Repositories</p>
           <hr className="divider" />
           {data.repos.length > 0
             ? data.repos.map((repo: any) => {

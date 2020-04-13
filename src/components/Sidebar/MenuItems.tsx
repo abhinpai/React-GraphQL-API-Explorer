@@ -25,11 +25,12 @@ export const MenuItems: IMenuItems[] = [
           icon: null,
           renderComponent: "githubUser",
         },
-        {
-          title: "Repository",
-          icon: null,
-          renderComponent: "githubRepo",
-        },
+        // Enable once you complete the remaining UI components
+        // {
+        //   title: "Repository",
+        //   icon: null,
+        //   renderComponent: "githubRepo",
+        // },
       ],
     },
     {

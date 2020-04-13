@@ -6,6 +6,13 @@ export default class Overview extends PureComponent {
     return (
       <div>
         <ComponentHeader title={"Overview"} />
+        <p>
+          Purpose of this application
+          Technology used to develop this application
+          Github Link
+          How to host react app in firebase
+          GraphQL APIs links
+        </p>
       </div>
     );
   }

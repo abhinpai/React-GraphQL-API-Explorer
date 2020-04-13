@@ -1,0 +1,40 @@
+.screen-name-span {
+  margin-left: 8px;
+  font-style: italic;
+  font-size: 13px;
+  color: #001529;
+}
+
+.tweet-meta-col {
+  & > p {
+    color: #001529;
+    & > span {
+      font-weight: bold;
+    }
+  }
+}
+
+.tweet-content-section {
+  padding: 0px;
+  cursor: pointer;
+}
+
+.tweets {
+  font-size: 14px;
+  margin: 0px;
+  margin-bottom: 14px;
+}
+
+.tweet-footer-div {
+  display: flex;
+  & > .tweet-datatime {
+    color: #0015297a;
+    margin-right: auto;
+  }
+  & > .retweet-count {
+    margin: 0px;
+    > span {
+      font-weight: bold;
+    }
+  }
+}
