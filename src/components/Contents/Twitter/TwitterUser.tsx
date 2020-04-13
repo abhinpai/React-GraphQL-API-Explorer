@@ -1,11 +1,12 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, FC } from "react";
 import { Input, Empty, Row, Col, Avatar } from "antd";
 import { formatDistanceToNow } from "date-fns";
+import { useQuery } from "@apollo/client";
+import { TwitterQuery } from "../../../utils/Constants";
+import { TwitterProfileSkeleTon } from "../../Skeleton/Skeleton";
 import "./Twitter.scss";
 
 const { Search } = Input;
-
-const x = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
 
 interface IGitHubUserState {
   isEmpty: boolean;
@@ -34,18 +35,28 @@ export default class TwitterUser extends PureComponent<{}, IGitHubUserState> {
           loading={this.state.loading}
           onSearch={(value) => this.searchUser(value)}
         />
-        {/* {this.state.isEmpty && (
+        {this.state.isEmpty && (
           <section className="section-empty-state">
-            <Empty description={"Enter username to search Twitter user profile"} />
+            <Empty
+              description={"Enter username to search Twitter user profile"}
+            />
           </section>
-        )} */}
+        )}
 
-        {this.renderProfile()}
+        {!this.state.isEmpty && (
+          <TwitterProfile thisRef={this} value={this.state.searchValue} />
+        )}
       </>
     );
   }
 
-  renderProfile() {
+  renderProfile(data: any) {
+    let emptyRepo = (
+      <Empty
+        className="empty-content"
+        description={data.name + " do not have any tweet"}
+      />
+    );
     return (
       <div className="content-div">
         <Row>
@@ -53,41 +64,31 @@ export default class TwitterUser extends PureComponent<{}, IGitHubUserState> {
             <img
               loading="lazy"
               className="profile-avatar"
-              src={
-                "http://pbs.twimg.com/profile_images/1216272117915738114/3h7bHgqE_normal.jpg"
-              }
+              src={data.profile_image_url}
             />
           </span>
           <section className="basic-profile-section">
             <p className="userName">
-              Abhin Pai
-              <span className="screen-name-span">@PaiAbhin</span>
+              {data.name}
+              <span className="screen-name-span">{"@" + data.screen_name}</span>
             </p>
-            <p className="companyName">
-              Software Engineer @Honeywell |\nOpen source enthusiastic | Having
-              a strong belief that Programming doesn't have any Language 👨🏻‍💻
-            </p>
+            <p className="companyName">{data.description}</p>
           </section>
-          <Col xs={12} sm={8} md={6} lg={5} xl={5} className="tweet-meta-col">
+          <Col xs={16} sm={10} md={8} lg={5} xl={5} className="tweet-meta-col">
             <p>
               Joined{" "}
-              <span>
-                {formatDistanceToNow(
-                  new Date("Sat Sep 07 05:43:16 +0000 2019")
-                )}
-              </span>{" "}
-              ago
+              <span>{formatDistanceToNow(new Date(data.created_at))}</span> ago
             </p>
           </Col>
-          <Col xs={12} sm={8} md={6} lg={5} xl={5} className="tweet-meta-col">
+          <Col xs={12} sm={7} md={6} lg={5} xl={5} className="tweet-meta-col">
             <p>
-              <span> 188 </span>
+              <span> {data.followers_count} </span>
               Follower
             </p>
           </Col>
-          <Col xs={12} sm={8} md={6} lg={5} xl={5} className="tweet-meta-col">
+          <Col xs={12} sm={7} md={6} lg={5} xl={5} className="tweet-meta-col">
             <p>
-              <span> 21 </span>
+              <span> {data.tweets_count} </span>
               Total Tweets
             </p>
           </Col>
@@ -95,32 +96,27 @@ export default class TwitterUser extends PureComponent<{}, IGitHubUserState> {
         <Row className="profile-contents-row">
           <p>Tweets</p>
           <hr className="divider" />
-          {x.map((x) => {
-            return this.renderTweets();
-          })}
+          {data.tweets.length > 0
+            ? data.tweets.map((tweet: any) => {
+                return this.renderTweets(tweet);
+              })
+            : emptyRepo}
         </Row>
       </div>
     );
   }
 
-  renderTweets() {
+  renderTweets(tweet: any) {
     return (
       <section className="tweet-content-section">
-        <p className="tweets">
-          RT @KnowingFlutter: No tienes claro la ruta a seguir para aprender
-          Flutter?, entre las diferentes opciones que hay en español, @imthepk
-          pre…
-        </p>
+        <p className="tweets">{tweet.text}</p>
         <div className="tweet-footer-div ">
           <p className="tweet-datatime">
             Created{" "}
-            <span>
-              {formatDistanceToNow(new Date("Sat Sep 07 05:43:16 +0000 2019"))}
-            </span>{" "}
-            ago
+            <span>{formatDistanceToNow(new Date(tweet.created_at))}</span> ago
           </p>
           <p className="retweet-count tweet-datatime">
-            <span>25</span> Retweets
+            <span> {tweet.retweet_count}</span> Retweets
           </p>
         </div>
         <hr className="divider" />
@@ -138,3 +134,20 @@ export default class TwitterUser extends PureComponent<{}, IGitHubUserState> {
     }
   }
 }
+
+export const TwitterProfile: FC<{ thisRef: any; value: string }> = ({
+  thisRef,
+  value,
+}) => {
+  const { loading, error, data } = useQuery(TwitterQuery.UserProfile, {
+    variables: { identity: value },
+  });
+  if (loading) {
+    return <TwitterProfileSkeleTon />;
+  } else if (error) {
+    thisRef.setState({ loading: false });
+    return <p>Error....</p>;
+  }
+  thisRef.setState({ loading: false });
+  return thisRef.renderProfile(data.twitter.user);
+};

@@ -17,9 +17,11 @@
 .tweet-content-section {
   padding: 0px;
   cursor: pointer;
+  width: -webkit-fill-available;
 }
 
 .tweets {
+  color: #001529;
   font-size: 14px;
   margin: 0px;
   margin-bottom: 14px;

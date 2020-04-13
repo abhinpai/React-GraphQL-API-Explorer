@@ -1,4 +1,3 @@
-
 import gql from "graphql-tag";
 
 export default class Constants {}
@@ -36,21 +35,45 @@ export class QueryConstants {
 export class GitHubQuery {
   public static readonly UserProfile = gql`
     query gitUser($username: String!) {
-      github{
-        user(username: $username)
-        {
+      github {
+        user(username: $username) {
           login
           id
           company
           avatar_url
-          repos{
+          repos {
             id
             name
-            owner{
+            owner {
               login
               company
               avatar_url
             }
+          }
+        }
+      }
+    }
+  `;
+}
+
+export class TwitterQuery {
+  public static readonly UserProfile = gql`
+    query twitter($identity: UserIdentity!) {
+      twitter {
+        user(identifier: name, identity: $identity) {
+          created_at
+          description
+          id
+          screen_name
+          name
+          profile_image_url
+          url
+          tweets_count
+          followers_count
+          tweets(limit: 9999) {
+            text
+            created_at
+            retweet_count
           }
         }
       }
