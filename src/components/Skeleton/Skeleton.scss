@@ -1,0 +1,33 @@
+.skeleton {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(-90deg, #c1c1c1 0%, #f8f8f8 50%, #c1c1c1 100%);
+  background-size: 400% 400%;
+  animation: left-to-right 1.2s ease-in-out infinite;
+  border-radius: 4px;
+  color: transparent;
+  position: relative;
+  z-index: 2;
+}
+.skeleton:before {
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(-90deg, #c1c1c1 0%, #f8f8f8 50%, #c1c1c1 100%);
+  background-size: 400% 400%;
+  animation: left-to-right 1.2s ease-in-out infinite;
+  z-index: 2;
+  content: "";
+}
+@keyframes left-to-right {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: -135% 0%;
+  }
+}

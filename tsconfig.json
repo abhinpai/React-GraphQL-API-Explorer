@@ -27,6 +27,7 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "importHelpers": true,
+    "noImplicitAny": true,
     "forceConsistentCasingInFileNames": true,
     
   },

@@ -1,4 +1,5 @@
-import { gql } from "@apollo/client";
+
+import gql from "graphql-tag";
 
 export default class Constants {}
 
@@ -26,6 +27,31 @@ export class QueryConstants {
           dataTypeId
           isMandatory
           isLocalizable
+        }
+      }
+    }
+  `;
+}
+
+export class GitHubQuery {
+  public static readonly UserProfile = gql`
+    query gitUser($username: String!) {
+      github{
+        user(username: $username)
+        {
+          login
+          id
+          company
+          avatar_url
+          repos{
+            id
+            name
+            owner{
+              login
+              company
+              avatar_url
+            }
+          }
         }
       }
     }

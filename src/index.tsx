@@ -16,15 +16,12 @@ import stores from "./stores";
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   link: new HttpLink({
-    headers: {
-      Authorization: "Bearer " + sessionStorage.getItem("token"),
-      customerId: "automation-acceptance-test-1",
-    },
-    uri: "http://localhost:51225/api/graphql/read",
+    uri: "https://www.graphqlhub.com/graphql",
   }),
 });
 
 ReactDOM.render(
+  // Enable strict mode once you find the solution for submenu and the menu console error 
   // <React.StrictMode>
     <Provider {...stores}>
       <ApolloProvider client={client}>

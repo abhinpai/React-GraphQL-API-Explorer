@@ -32,7 +32,6 @@ export default class Home extends PureComponent<IHomeProps> {
                 {this.getVisiblity("pokemon") && <Pokemon />}
                 {this.getVisiblity("twitterUser") && <TwitterUser />}
                 {this.getVisiblity("twitterTweets") && <Tweets />}
-                
               </Content>
             </Layout>
           </Layout>

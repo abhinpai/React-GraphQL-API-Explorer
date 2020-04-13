@@ -17,6 +17,10 @@ export default class HeaderComponent extends Component {
 
 export class ComponentHeader extends Component<IComponentHeaderProps> {
   render() {
-    return <div>{this.props.title}</div>;
+    return (
+      <div>
+        <h1 className="component-header">{this.props.title}</h1>
+      </div>
+    );
   }
 }
