@@ -1,20 +1,18 @@
 import React, { PureComponent, FC } from "react";
-import { Input, Empty, Row, Col, Avatar } from "antd";
+import { Input, Empty, Row, Col } from "antd";
 import { formatDistanceToNow } from "date-fns";
 import { useQuery } from "@apollo/client";
 import { TwitterQuery } from "../../../utils/Constants";
 import { TwitterProfileSkeleTon } from "../../Skeleton/Skeleton";
+import IContentComponentState from "../../../Models/IContentComponentState";
 import "./Twitter.scss";
 
 const { Search } = Input;
 
-interface IGitHubUserState {
-  isEmpty: boolean;
-  loading: boolean;
-  searchValue: string;
-}
-
-export default class TwitterUser extends PureComponent<{}, IGitHubUserState> {
+export default class TwitterUser extends PureComponent<
+  {},
+  IContentComponentState
+> {
   constructor(props: any) {
     super(props);
     this.state = {

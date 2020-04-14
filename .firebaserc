@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "knowledge-graph-editor"
+    "default": "app-graphql-api-explorer"
   }
 }

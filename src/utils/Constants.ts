@@ -79,4 +79,26 @@ export class TwitterQuery {
       }
     }
   `;
+
+  public static readonly SearchTweets = gql`
+    query twitter($query: String!) {
+      twitter {
+        search(q: $query, count: 9999, result_type: recent) {
+          id
+          created_at
+          text
+          retweet_count
+          user {
+            created_at
+            description
+            screen_name
+            name
+            profile_image_url
+            tweets_count
+            followers_count
+          }
+        }
+      }
+    }
+  `;
 }

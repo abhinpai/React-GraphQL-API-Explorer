@@ -7,10 +7,10 @@ import Overview from "../Contents/Overview/Overview";
 import GitHubUser from "../Contents/Github/GithubUser";
 import { observer, inject } from "mobx-react";
 import { IHomeProps } from "./IHomeProps";
-import Repo from '../Contents/Github/Repos';
-import Pokemon from '../Contents/Pokemon/Pokemon';
-import TwitterUser from '../Contents/Twitter/TwitterUser';
-import Tweets from '../Contents/Twitter/Tweets';
+import Repo from "../Contents/Github/Repos";
+import Pokemon from "../Contents/Pokemon/Pokemon";
+import TwitterUser from "../Contents/Twitter/TwitterUser";
+import Tweets from "../Contents/Twitter/Tweets";
 
 const { Content } = Layout;
 

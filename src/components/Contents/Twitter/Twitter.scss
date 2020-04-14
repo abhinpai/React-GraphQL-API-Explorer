@@ -6,6 +6,7 @@
 }
 
 .tweet-meta-col {
+  margin-top: 6px;
   & > p {
     color: #001529;
     & > span {
@@ -39,4 +40,35 @@
       font-weight: bold;
     }
   }
+}
+
+.tweets-div {
+  margin-top: 14px;
+}
+
+.tweet-posted-user {
+  display: flex;
+  margin-bottom: 16px;
+  & > .tweet-posted-by-avatar {
+    margin-right: 12px;
+  }
+}
+
+.tweet-user-meta {
+  & > .usermame {
+    font-size: 18px;
+    margin-right: 16px;
+  }
+  & > .screen-name {
+    font-weight: bold;
+    font-style: italic;
+  }
+}
+
+.no-padding {
+  padding: unset;
+}
+
+.no-margin {
+  margin: unset;
 }

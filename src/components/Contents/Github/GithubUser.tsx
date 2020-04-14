@@ -3,16 +3,15 @@ import { Input, Empty, Row, Col, Avatar } from "antd";
 import { GitHubQuery } from "../../../utils/Constants";
 import { useQuery } from "@apollo/client";
 import { GithubProfileSkeleton } from "../../Skeleton/Skeleton";
+import IContentComponentState from "../../../Models/IContentComponentState";
 import "./Github.scss";
 
 const { Search } = Input;
-interface IGitHubUserState {
-  isEmpty: boolean;
-  loading: boolean;
-  searchValue: string;
-}
 
-export default class GitHubUser extends PureComponent<{}, IGitHubUserState> {
+export default class GitHubUser extends PureComponent<
+  {},
+  IContentComponentState
+> {
   constructor(props: any) {
     super(props);
     this.state = {
