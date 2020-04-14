@@ -55,7 +55,7 @@ export default class Sidebar extends PureComponent<ISidebarProps> {
               </span>
             }
             onTitleClick={() =>
-              this.updateContentVisibility(item.renderComponent)
+              item.renderComponent && this.updateContentVisibility(item.renderComponent)
             }
           >
             {item.subMenuItems.map((subMenuItem, subMenuItemIndex) => {
@@ -76,7 +76,7 @@ export default class Sidebar extends PureComponent<ISidebarProps> {
         return (
           <Menu.Item
             key={subMenukey.toString()}
-            onClick={() => this.updateContentVisibility(item.renderComponent)}
+            onClick={() => item.renderComponent && this.updateContentVisibility(item.renderComponent)}
           >
             <span>
               {item.icon}

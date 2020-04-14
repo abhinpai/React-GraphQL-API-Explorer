@@ -4,7 +4,7 @@ export interface IMenuItems {
   title: string;
   icon: JSX.Element;
   subMenuItems?: ISubMenuItem[] | null;
-  renderComponent: string;
+  renderComponent?: string | null;
 }
 
 interface ISubMenuItem {

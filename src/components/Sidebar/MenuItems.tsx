@@ -18,7 +18,7 @@ export const MenuItems: IMenuItems[] = [
     {
       title: "Github",
       icon: <GithubOutlined />,
-      renderComponent: "githubUser",
+      renderComponent: null,
       subMenuItems: [
         {
           title: "User",
@@ -36,7 +36,7 @@ export const MenuItems: IMenuItems[] = [
     {
       title: "Twitter",
       icon: <TwitterOutlined />,
-      renderComponent: "twitterUser",
+      renderComponent: null,
       subMenuItems: [
         {
           title: "User",
