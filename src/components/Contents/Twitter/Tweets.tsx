@@ -1,11 +1,12 @@
 import React, { PureComponent, FC } from "react";
-import { Input, Empty, Row, Col, List, Skeleton, Avatar } from "antd";
+import { Input, Empty, Avatar } from "antd";
 import IContentComponentState from "../../../Models/IContentComponentState";
 import IFCQueryComponentPorps from "../../../Models/IFCQueryComponentProps";
 import { useQuery } from "@apollo/client";
 import { TwitterQuery } from "../../../utils/Constants";
 import { formatDistanceToNow } from "date-fns";
 import "./Twitter.scss";
+import { TwitterProfileSkeleTon } from "../../Skeleton/Skeleton";
 
 const { Search } = Input;
 
@@ -100,7 +101,7 @@ export const FetchTweets: FC<IFCQueryComponentPorps> = (props) => {
     variables: { query: props.value },
   });
   if (loading) {
-    return <p>Loading....</p>;
+    return <TwitterProfileSkeleTon />;
   } else if (error) {
     props.thisRef.setState({ loading: false });
     return <p>Error....</p>;

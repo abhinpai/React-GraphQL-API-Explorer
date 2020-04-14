@@ -69,7 +69,7 @@ export class GithubProfileSkeleton extends Component {
   }
 }
 
-export class TwitterProfileSkeleTon extends Component {
+export class TwitterTweetsSkeleTon extends Component {
   render() {
     return (
       <div className="content-div">
@@ -128,5 +128,55 @@ export class TwitterProfileSkeleTon extends Component {
         </Row>
       </div>
     );
+  }
+}
+
+export class TwitterProfileSkeleTon extends Component {
+  render() {
+    return dummyCount.map((x, index) => {
+      return (
+        <div className="tweets-div" key={index}>
+          <section className="tweet-posted-by">
+            <div className="tweet-posted-user">
+              <div className="tweet-posted-by-avatar">
+                <SkeletonDiv width="50" height="50" />
+              </div>
+              <div>
+                <p className="tweet-user-meta no-margin">
+                  <span className="usermame">
+                    <SkeletonDiv width="140" height="20" />
+                  </span>
+                  <span className="screen-name">
+                    <SkeletonDiv width="140" height="16" />
+                  </span>
+                </p>
+                <p className="no-margin">
+                  <SkeletonDiv width="500" height="20" />
+                </p>
+              </div>
+            </div>
+          </section>
+          <section className="tweet-content-section">
+            <p className="tweets">
+              <SkeletonDiv width="400" height="18" />
+            </p>
+            <div className="tweet-footer-div ">
+              <p className="tweet-datatime">
+                <span>
+                  <SkeletonDiv width="180" height="16" />
+                </span>
+              </p>
+              <p className="retweet-count tweet-datatime">
+                <span>
+                  {" "}
+                  <SkeletonDiv width="160" height="16" />
+                </span>
+              </p>
+            </div>
+            <hr className="divider" />
+          </section>
+        </div>
+      );
+    });
   }
 }

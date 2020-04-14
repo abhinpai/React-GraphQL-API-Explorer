@@ -1,7 +1,14 @@
 {
-  "name": "knowledge-graph-editor",
+  "name": "graphql-api-explorer",
   "version": "0.1.0",
   "private": true,
+  "author": "Abhin Pai",
+  "repository": {
+    "directory": "https://github.com/abhinpai/React-GraphQL-API-Explorer",
+    "type": "React Web Application",
+    "url": "https://app-graphql-api-explorer.web.app/"
+  },
+  "description": "This web app uses apollo graphql client library to consume graphql apis and for the UI ant design lib is being used and this application has been hosted in firebase",
   "dependencies": {
     "@apollo/client": "^3.0.0-beta.43",
     "@testing-library/jest-dom": "^4.2.4",

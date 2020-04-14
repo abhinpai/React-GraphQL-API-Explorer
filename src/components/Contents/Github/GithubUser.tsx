@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { GithubProfileSkeleton } from "../../Skeleton/Skeleton";
 import IContentComponentState from "../../../Models/IContentComponentState";
 import "./Github.scss";
+import IFCQueryComponentPorps from "../../../Models/IFCQueryComponentProps";
 
 const { Search } = Input;
 
@@ -113,19 +114,16 @@ export default class GitHubUser extends PureComponent<
   }
 }
 
-export const RenderGitProfile: FC<{ thisRef: any; value: string }> = ({
-  thisRef,
-  value,
-}) => {
+export const RenderGitProfile: FC<IFCQueryComponentPorps> = (props) => {
   const { loading, error, data } = useQuery(GitHubQuery.UserProfile, {
-    variables: { username: value },
+    variables: { username: props.value },
   });
   if (loading) {
     return <GithubProfileSkeleton />;
   } else if (error) {
-    thisRef.setState({ loading: false });
+    props.thisRef.setState({ loading: false });
     return <p>Error....</p>;
   }
-  thisRef.setState({ loading: false });
-  return thisRef.renderProfile(data.github.user);
+  props.thisRef.setState({ loading: false });
+  return props.thisRef.renderProfile(data.github.user);
 };

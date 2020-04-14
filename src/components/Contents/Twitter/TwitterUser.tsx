@@ -6,6 +6,7 @@ import { TwitterQuery } from "../../../utils/Constants";
 import { TwitterProfileSkeleTon } from "../../Skeleton/Skeleton";
 import IContentComponentState from "../../../Models/IContentComponentState";
 import "./Twitter.scss";
+import IFCQueryComponentPorps from "../../../Models/IFCQueryComponentProps";
 
 const { Search } = Input;
 
@@ -133,19 +134,16 @@ export default class TwitterUser extends PureComponent<
   }
 }
 
-export const TwitterProfile: FC<{ thisRef: any; value: string }> = ({
-  thisRef,
-  value,
-}) => {
+export const TwitterProfile: FC<IFCQueryComponentPorps> = (props) => {
   const { loading, error, data } = useQuery(TwitterQuery.UserProfile, {
-    variables: { identity: value },
+    variables: { identity: props.value },
   });
   if (loading) {
     return <TwitterProfileSkeleTon />;
   } else if (error) {
-    thisRef.setState({ loading: false });
+    props.thisRef.setState({ loading: false });
     return <p>Error....</p>;
   }
-  thisRef.setState({ loading: false });
-  return thisRef.renderProfile(data.twitter.user);
+  props.thisRef.setState({ loading: false });
+  return props.thisRef.renderProfile(data.twitter.user);
 };
