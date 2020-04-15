@@ -50,12 +50,12 @@ export const MenuItems: IMenuItems[] = [
       },
     ],
   },
-  {
-    title: "Pokemon",
-    icon: <QqOutlined />,
-    subMenuItems: null,
-    renderComponent: "pokemon",
-  },
+  // {
+  //   title: "Pokemon",
+  //   icon: <QqOutlined />,
+  //   subMenuItems: null,
+  //   renderComponent: "pokemon",
+  // },
   // {
   //   title: "Knowledge Graph",
   //   icon: <ShareAltOutlined />,

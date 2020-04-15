@@ -102,3 +102,54 @@ export class TwitterQuery {
     }
   `;
 }
+
+export class PokemonQuery {
+  public static readonly Pokemons = gql`
+    {
+      pokemons(first: 1000000000) {
+        id
+        number
+        name
+        image
+        weight {
+          minimum
+          maximum
+        }
+        attacks {
+          fast {
+            name
+            type
+            damage
+          }
+          special {
+            name
+            type
+            damage
+          }
+        }
+        evolutions {
+          id
+          image
+          number
+          name
+          weight {
+            minimum
+            maximum
+          }
+          attacks {
+            fast {
+              name
+              type
+              damage
+            }
+            special {
+              name
+              type
+              damage
+            }
+          }
+        }
+      }
+    }
+  `;
+}
