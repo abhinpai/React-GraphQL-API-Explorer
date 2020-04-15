@@ -29,5 +29,7 @@ jobs:
       run: yarn install
     - name: Building an application
       run: yarn build
+      env:
+        CI: true
 
     
