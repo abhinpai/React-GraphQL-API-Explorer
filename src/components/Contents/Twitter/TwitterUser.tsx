@@ -7,6 +7,7 @@ import { TwitterProfileSkeleTon } from "../../Skeleton/Skeleton";
 import IContentComponentState from "../../../Models/IContentComponentState";
 import "./Twitter.scss";
 import IFCQueryComponentPorps from "../../../Models/IFCQueryComponentProps";
+import { SimpleImg } from "react-simple-img";
 
 const { Search } = Input;
 
@@ -60,9 +61,10 @@ export default class TwitterUser extends PureComponent<
       <div className="content-div">
         <Row>
           <span className="span-profile">
-            <img
-              loading="lazy"
+            <SimpleImg
               className="profile-avatar"
+              width={100}
+              height={100}
               src={data.profile_image_url}
             />
           </span>

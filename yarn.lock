@@ -5825,6 +5825,11 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 
+intersection-observer@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.1.tgz#e340fc56ce74290fe2b2394d1ce88c4353ac6dfa"
+  integrity sha512-Zd7Plneq82kiXFixs7bX62YnuZ0BMRci9br7io88LwDyF3V43cQMI+G5IiTlTNTt+LsDUppl19J/M2Fp9UkH6g==
+
 invariant@^2.2.2, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -9788,6 +9793,13 @@ react-scripts@3.4.1:
     workbox-webpack-plugin "4.3.1"
   optionalDependencies:
     fsevents "2.1.2"
+
+react-simple-img@^2.3.9:
+  version "2.3.9"
+  resolved "https://registry.yarnpkg.com/react-simple-img/-/react-simple-img-2.3.9.tgz#d7cb230b4ace1928ab7b0b2f3ec9b23c03339c2e"
+  integrity sha512-h+WLq8+qwN7KxvzXDwIG22dB+WLrb4gIGtux5o4v9j8Be4G0NqcsJbgKwoHblC0qlPGUpFfeUhkEQN6zSX39jg==
+  dependencies:
+    intersection-observer "^0.5.1"
 
 react@^16.13.1:
   version "16.13.1"

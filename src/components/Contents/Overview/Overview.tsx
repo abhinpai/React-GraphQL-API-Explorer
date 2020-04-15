@@ -6,15 +6,18 @@ export default class Overview extends PureComponent {
     return (
       <div>
         <ComponentHeader title={"Overview"} />
-        <p>
-          Purpose of this application
-          Technology used to develop this application
-          Github Link
-          What is GraphQL and how its different then the rest 
-          What is the pros and cons of the Graphql 
-          How to host react app in firebase
-          GraphQL APIs links
-        </p>
+        <ul>
+          <li>Purpose of this application</li>
+          <li>
+            Technology used to develop this application, with Offcial website
+            link
+          </li>
+          <li>Github Link</li>
+          <li>What is GraphQL and how its different then the rest</li>
+          <li>What is the pros and cons of the Graphql</li>
+          <li>React app hosting in firebase</li>
+          <li>Open GraphQl APIs links</li>
+        </ul>
       </div>
     );
   }

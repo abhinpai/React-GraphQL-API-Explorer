@@ -1,11 +1,12 @@
 import React, { PureComponent, FC } from "react";
-import { Input, Empty, Row, Col, Avatar } from "antd";
+import { Input, Empty, Row, Col } from "antd";
 import { GitHubQuery } from "../../../utils/Constants";
 import { useQuery } from "@apollo/client";
 import { GithubProfileSkeleton } from "../../Skeleton/Skeleton";
 import IContentComponentState from "../../../Models/IContentComponentState";
 import "./Github.scss";
 import IFCQueryComponentPorps from "../../../Models/IFCQueryComponentProps";
+import { SimpleImg } from "react-simple-img";
 
 const { Search } = Input;
 
@@ -58,11 +59,7 @@ export default class GitHubUser extends PureComponent<
       <div className="content-div">
         <Row>
           <span className="span-profile">
-            <img
-              loading="lazy"
-              className="profile-avatar"
-              src={data.avatar_url}
-            />
+            <SimpleImg width={100} height={100} src={data.avatar_url} />
           </span>
           <section className="basic-profile-section">
             <p className="userName">{data.login}</p>
@@ -100,10 +97,11 @@ export default class GitHubUser extends PureComponent<
         <section className="repo-section">
           <p className="repo-name">{repo.name}</p>
           <div className="repo-meta-div">
-            <Avatar
+            <SimpleImg
               className="profile-avatar-owner"
+              width={20}
+              height={20}
               src={repo.owner.avatar_url}
-              size={20}
             />
             <p>{repo.owner.login}</p>
           </div>

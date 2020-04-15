@@ -7,6 +7,7 @@ import { TwitterQuery } from "../../../utils/Constants";
 import { formatDistanceToNow } from "date-fns";
 import "./Twitter.scss";
 import { TwitterProfileSkeleTon } from "../../Skeleton/Skeleton";
+import { SimpleImg } from "react-simple-img";
 
 const { Search } = Input;
 
@@ -50,10 +51,11 @@ export default class Tweets extends PureComponent<{}, IContentComponentState> {
         <div className="tweets-div" key={index}>
           <section className="tweet-posted-by">
             <div className="tweet-posted-user">
-              <Avatar
+              <SimpleImg
                 className="tweet-posted-by-avatar"
+                width={50}
+                height={50}
                 src={tweet.user.profile_image_url}
-                size={50}
               />
               <div>
                 <p className="tweet-user-meta no-margin">
