@@ -52,6 +52,7 @@ export default class Tweets extends PureComponent<{}, IContentComponentState> {
           <section className="tweet-posted-by">
             <div className="tweet-posted-user">
               <SimpleImg
+                importance={"high"}
                 className="tweet-posted-by-avatar"
                 width={50}
                 height={50}

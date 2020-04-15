@@ -59,7 +59,7 @@ export default class GitHubUser extends PureComponent<
       <div className="content-div">
         <Row>
           <span className="span-profile">
-            <SimpleImg width={100} height={100} src={data.avatar_url} />
+            <SimpleImg importance={"high"} width={100} height={100} src={data.avatar_url} />
           </span>
           <section className="basic-profile-section">
             <p className="userName">{data.login}</p>
@@ -98,6 +98,7 @@ export default class GitHubUser extends PureComponent<
           <p className="repo-name">{repo.name}</p>
           <div className="repo-meta-div">
             <SimpleImg
+              importance={"high"}
               className="profile-avatar-owner"
               width={20}
               height={20}

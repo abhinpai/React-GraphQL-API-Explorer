@@ -62,6 +62,7 @@ export default class TwitterUser extends PureComponent<
         <Row>
           <span className="span-profile">
             <SimpleImg
+              importance={"high"}
               className="profile-avatar"
               width={100}
               height={100}
