@@ -99,7 +99,7 @@ export default class Overview extends PureComponent {
           </a>
         </p>
 
-        <h3>CI-CD for the application</h3>
+        <h3>Source Code</h3>
         <p>
           To learn clone this project from{" "}
           <a
