@@ -84,14 +84,31 @@ export default class Overview extends PureComponent {
             );
           })}
         </Row>
-        <ul>
-          <li>Github Link</li>
-          <li>What is GraphQL and how its different then the rest</li>
-          <li>What is the pros and cons of the Graphql</li>
-          <li>CICD with Github Action</li>
-          <li>React app hosting in firebase</li>
-          <li>Open GraphQl APIs links</li>
-        </ul>
+
+        <h3>CI-CD for the application</h3>
+        <p>
+          GitHub action is being used to build this application during each
+          commit to the <b>Master Branch</b> and that build package will be
+          deploy in Fireabse <br />
+          To learn more check out my story{" "}
+          <a
+            target="_blank"
+            href="https://medium.com/@dev.abhinpai/hosting-web-application-into-firebase-from-vs-code-and-github-action-74ea01c00caa"
+          >
+            Hosting React application using Github actions to Firebase
+          </a>
+        </p>
+
+        <h3>CI-CD for the application</h3>
+        <p>
+          To learn clone this project from{" "}
+          <a
+            target="_blank"
+            href="https://github.com/abhinpai/React-GraphQL-API-Explorer"
+          >
+            GitHub Repo
+          </a>
+        </p>
       </div>
     );
   }
